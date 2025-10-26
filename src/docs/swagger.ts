@@ -1,4 +1,4 @@
-const swaggerAutogen = require("swagger-autogen")();
+import swaggerAutogen from "swagger-autogen";
 
 const doc = {
   info: {
@@ -15,7 +15,6 @@ const doc = {
       description: "Local Development server",
     },
   ],
-  schemes: ["http"],
 };
 
 const outputFile = "./swagger_output.json";
@@ -23,4 +22,6 @@ const endpointsFiles = ["../routes/api.ts"];
 
 swaggerAutogen({
   openapi: "3.0.0",
-})(outputFile, endpointsFiles, doc);
+})(outputFile, endpointsFiles, doc).then(() => {
+  console.log("Swagger documentation file generated successfully.");
+});

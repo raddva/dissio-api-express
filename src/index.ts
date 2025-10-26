@@ -16,7 +16,7 @@ async function init() {
 
     const PORT = 3000;
     app.get("/", (req, res) => {
-      res.status(200).json({ message: "Welcome to Eventreo API", data: null });
+      res.status(200).json({ message: "Welcome to Dissio API", data: null });
     });
 
     app.use("/api", router);
@@ -26,9 +26,7 @@ async function init() {
     app.use(errorMiddleware.serverRoute());
     app.use(errorMiddleware.serverError());
 
-    app.listen(PORT, () =>
-      console.log(`Server is running on http://localhost:${PORT}`)
-    );
+    app.listen(PORT, () => console.log(`Server is running`));
   } catch (error) {
     console.error("Error initializing the server:", error);
   }

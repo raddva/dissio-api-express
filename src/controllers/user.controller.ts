@@ -4,12 +4,11 @@ import response from "../utils/response";
 import { createUserSchema, updateUserSchema } from "../models/user.model";
 import { Timestamp } from "firebase-admin/firestore";
 
-const db = getDb();
-const usersCollection = db.collection("users");
-
 export default {
   async createUser(req: Request, res: Response) {
     try {
+      const db = getDb();
+      const usersCollection = db.collection("users");
       const validatedData = await createUserSchema.validate(req.body);
       const { email, name } = validatedData;
 
@@ -43,6 +42,8 @@ export default {
 
   async getAllUsers(req: Request, res: Response) {
     try {
+      const db = getDb();
+      const usersCollection = db.collection("users");
       const snapshot = await usersCollection.orderBy("createdAt", "desc").get();
       const users: any[] = [];
       snapshot.forEach((doc) => {
@@ -57,6 +58,8 @@ export default {
 
   async getUserById(req: Request, res: Response) {
     try {
+      const db = getDb();
+      const usersCollection = db.collection("users");
       const { id } = req.params;
       const userDoc = await usersCollection.doc(id).get();
 
@@ -76,6 +79,8 @@ export default {
 
   async updateUser(req: Request, res: Response) {
     try {
+      const db = getDb();
+      const usersCollection = db.collection("users");
       const { id } = req.params;
       const validatedData = await updateUserSchema.validate(req.body);
 
@@ -99,6 +104,8 @@ export default {
 
   async deleteUser(req: Request, res: Response) {
     try {
+      const db = getDb();
+      const usersCollection = db.collection("users");
       const { id } = req.params;
 
       const userRef = usersCollection.doc(id);

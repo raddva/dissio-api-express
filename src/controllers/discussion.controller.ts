@@ -7,12 +7,11 @@ import {
 } from "../models/discussion.model";
 import { Timestamp } from "firebase-admin/firestore";
 
-const db = getDb();
-const discussionsCollection = db.collection("discussions");
-
 export default {
   async createDiscussion(req: Request, res: Response) {
     try {
+      const db = getDb();
+      const discussionsCollection = db.collection("discussions");
       const validatedData = await createDiscussionSchema.validate(req.body);
 
       const newDiscussion = {
@@ -34,6 +33,8 @@ export default {
 
   async getAllDiscussions(req: Request, res: Response) {
     try {
+      const db = getDb();
+      const discussionsCollection = db.collection("discussions");
       const snapshot = await discussionsCollection
         .orderBy("createdAt", "desc")
         .get();
@@ -50,6 +51,8 @@ export default {
 
   async getDiscussionById(req: Request, res: Response) {
     try {
+      const db = getDb();
+      const discussionsCollection = db.collection("discussions");
       const { id } = req.params;
       const doc = await discussionsCollection.doc(id).get();
 
@@ -69,6 +72,8 @@ export default {
 
   async createReply(req: Request, res: Response) {
     try {
+      const db = getDb();
+      const discussionsCollection = db.collection("discussions");
       const { discussionId } = req.params;
       const validatedData = await createReplySchema.validate(req.body);
 
@@ -99,6 +104,8 @@ export default {
 
   async getRepliesForDiscussion(req: Request, res: Response) {
     try {
+      const db = getDb();
+      const discussionsCollection = db.collection("discussions");
       const { discussionId } = req.params;
 
       const snapshot = await discussionsCollection
