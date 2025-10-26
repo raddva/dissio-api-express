@@ -1,0 +1,42 @@
+{
+  "name": "dissio-api-express",
+  "version": "1.0.0",
+  "description": "Discussion API",
+  "homepage": "https://github.com/raddva/dissio-api-express#readme",
+  "bugs": {
+    "url": "https://github.com/raddva/dissio-api-express/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raddva/dissio-api-express.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.ts",
+    "docs": "ts-node src/docs/swagger.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.5.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "yup": "^1.7.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.4",
+    "@types/node": "^24.9.1",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
+    "@types/yup": "^0.29.14",
+    "nodemon": "^3.1.10",
+    "swagger-autogen": "^2.23.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
