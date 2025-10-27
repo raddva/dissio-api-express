@@ -15,6 +15,18 @@ const doc = {
       description: "Local Development server",
     },
   ],
+  schemas: {
+    CreateUserRequest: {
+      fullName: "Mandyoso",
+      username: "mandy",
+      password: "Secret101%",
+      confirmPassword: "Secret101%",
+    },
+    AuthRequest: {
+      username: "mandy",
+      password: "Secret101%",
+    },
+  },
 };
 
 const outputFile = "./swagger_output.json";

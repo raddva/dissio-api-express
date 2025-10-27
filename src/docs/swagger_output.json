@@ -26,6 +26,9 @@
         }
       },
       "get": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "responses": {
           "default": {
@@ -54,6 +57,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -69,9 +75,14 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [],
+        "requestBody": {}
       },
       "delete": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -87,29 +98,64 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": []
       }
     },
     "/discussions": {
       "post": {
+        "tags": [
+          "Discussions"
+        ],
         "description": "",
         "responses": {
           "default": {
             "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": {}
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDiscussionRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDiscussionRequest"
+              }
+            }
           }
         }
       },
       "get": {
+        "tags": [
+          "Discussions"
+        ],
         "description": "",
         "responses": {
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": {}
+          }
+        ]
       }
     },
     "/discussions/{id}": {
       "get": {
+        "tags": [
+          "Discussions"
+        ],
         "description": "",
         "parameters": [
           {
@@ -125,11 +171,19 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": {}
+          }
+        ]
       }
     },
     "/discussions/{discussionId}/replies": {
       "post": {
+        "tags": [
+          "Replies"
+        ],
         "description": "",
         "parameters": [
           {
@@ -144,10 +198,33 @@
         "responses": {
           "default": {
             "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": {}
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReplyRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateReplyRequest"
+              }
+            }
           }
         }
       },
       "get": {
+        "tags": [
+          "Replies"
+        ],
         "description": "",
         "parameters": [
           {
@@ -163,8 +240,25 @@
           "default": {
             "description": ""
           }
-        }
+        },
+        "security": [
+          {
+            "bearerAuth": {}
+          }
+        ]
       }
+    }
+  },
+  "schemas": {
+    "CreateUserRequest": {
+      "fullName": "Mandyoso",
+      "username": "mandy",
+      "password": "Secret101%",
+      "confirmPassword": "Secret101%"
+    },
+    "AuthRequest": {
+      "username": "mandy",
+      "password": "Secret101%"
     }
   }
 }

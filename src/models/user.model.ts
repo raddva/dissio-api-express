@@ -3,19 +3,20 @@ import * as admin from "firebase-admin";
 
 export interface User {
   id?: string;
-  name: string;
+  displayName: string;
   email: string;
   createdAt: admin.firestore.Timestamp;
 }
 
 export const createUserSchema = Yup.object({
-  name: Yup.string().required("Name is required"),
-  email: Yup.string()
-    .email("Must be a valid email")
-    .required("Email is required"),
+  displayName: Yup.string().required("Display Name is required"),
+  email: Yup.string().required("Email is required"),
+  password: Yup.string()
+    .required("Password is required")
+    .min(6, "Password must be at least 6 characters"),
 });
 
 export const updateUserSchema = Yup.object({
-  name: Yup.string().optional(),
-  email: Yup.string().email("Must be a valid email").optional(),
+  displayName: Yup.string().optional(),
+  email: Yup.string().optional(),
 });

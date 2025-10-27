@@ -9,6 +9,18 @@ import { Timestamp } from "firebase-admin/firestore";
 
 export default {
   async createDiscussion(req: Request, res: Response) {
+    /**
+      #swagger.tags = ['Discussions']
+      #swagger.security = [{
+       "bearerAuth": {}
+      }]
+      #swagger.requestBody = {
+        required: true,
+        schema: {
+          $ref: "#/components/schemas/CreateDiscussionRequest"
+        }
+      }
+    */
     try {
       const db = getDb();
       const discussionsCollection = db.collection("discussions");
@@ -32,6 +44,12 @@ export default {
   },
 
   async getAllDiscussions(req: Request, res: Response) {
+    /**
+      #swagger.tags = ['Discussions']
+      #swagger.security = [{
+       "bearerAuth": {}
+      }]
+    */
     try {
       const db = getDb();
       const discussionsCollection = db.collection("discussions");
@@ -50,6 +68,12 @@ export default {
   },
 
   async getDiscussionById(req: Request, res: Response) {
+    /**
+      #swagger.tags = ['Discussions']
+      #swagger.security = [{
+       "bearerAuth": {}
+      }]
+    */
     try {
       const db = getDb();
       const discussionsCollection = db.collection("discussions");
@@ -71,6 +95,18 @@ export default {
   },
 
   async createReply(req: Request, res: Response) {
+    /**
+      #swagger.tags = ['Replies']
+      #swagger.security = [{
+       "bearerAuth": {}
+      }]
+      #swagger.requestBody = {
+        required: true,
+        schema: {
+          $ref: "#/components/schemas/CreateReplyRequest"
+        }
+      }
+    */
     try {
       const db = getDb();
       const discussionsCollection = db.collection("discussions");
@@ -103,6 +139,12 @@ export default {
   },
 
   async getRepliesForDiscussion(req: Request, res: Response) {
+    /**
+      #swagger.tags = ['Replies']
+      #swagger.security = [{
+       "bearerAuth": {}
+      }]
+    */
     try {
       const db = getDb();
       const discussionsCollection = db.collection("discussions");

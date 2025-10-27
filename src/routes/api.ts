@@ -1,15 +1,21 @@
 import { Router } from "express";
 import userController from "../controllers/user.controller";
 import discussionController from "../controllers/discussion.controller";
+import authMiddleware from "../middlewares/auth.middleware";
 
 const router = Router();
-
-// --- User Routes ---
-router.post("/users", userController.createUser);
-router.get("/users", userController.getAllUsers);
+// --- Auth Routes (Public) ---
+router.post("/auth/register", userController.registerUser);
+// --- User Routes (Protected) ---
+router.get("/users/me", authMiddleware.verifyToken, userController.getMe);
 router.get("/users/:id", userController.getUserById);
-router.put("/users/:id", userController.updateUser);
-router.delete("/users/:id", userController.deleteUser);
+
+router.put("/users/:id", authMiddleware.verifyToken, userController.updateUser);
+router.delete(
+  "/users/:id",
+  authMiddleware.verifyToken,
+  userController.deleteUser
+);
 
 // --- Discussion Routes ---
 router.post("/discussions", discussionController.createDiscussion);
